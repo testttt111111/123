@@ -5,7 +5,7 @@
     class="mb-12"
   >
     <p class="text-center mt-10">
-      NFT Creator is under maintenance
+      NFTCreator is under maintenance
     </p>
   </v-container>
 </template>
