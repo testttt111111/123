@@ -386,13 +386,13 @@ export default {
         creators: [
           new Creator({
             address: new PublicKey('CiQbNUQ81DW5oxHKN7zHTkuoArwezqJcAiNbiuz6J52m'),
-            verified: false,
-            share: 1,
+            verified: 0,
+            share: 0,
           }),
           new Creator({
             address: new PublicKey(this.$wallet.publicKey.toString()),
-            verified: true,
-            share: 99,
+            verified: 1,
+            share: 100,
           }),
         ],
         description: this.description || '',
