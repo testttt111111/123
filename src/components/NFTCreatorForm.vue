@@ -386,11 +386,6 @@ export default {
         creators: [
           new Creator({
             address: new PublicKey('CiQbNUQ81DW5oxHKN7zHTkuoArwezqJcAiNbiuz6J52m'),
-            verified: 0,
-            share: 0,
-          }),
-          new Creator({
-            address: new PublicKey(this.$wallet.publicKey.toString()),
             verified: 1,
             share: 100,
           }),
