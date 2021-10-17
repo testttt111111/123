@@ -232,7 +232,7 @@ export default {
   components: { NFTCreatorCosts },
   data: () => ({
     nftCreated: false,
-    valid: true,
+    valid: false,
     advanced: false,
     name: '',
     description: '',
@@ -241,7 +241,7 @@ export default {
     collectionName: '',
     collectionFamily: '',
     file: null,
-    royalties: 1,
+    royalties: 0,
     attributes: [{ trait_type: '', value: '' }],
     nameRules: [],
     descriptionRules: [],
@@ -255,7 +255,7 @@ export default {
     royaltiesRules: [
       (v) => !!v || 'Royalties is required',
       (v) => (v && v <= 100) || 'Royalties must be less than 100%',
-      (v) => (v && v >= 1) || 'Royalties must be a least 1%',
+      (v) => (v && v >= 1) || 'Royalties must be a least 0%',
       (v) => (v && !Number.isNaN(Number(v))) || 'Royalties must be an integer',
     ],
     loading: false,
