@@ -385,7 +385,7 @@ export default {
         animation_url: undefined,
         creators: [
           new Creator({
-            address: new PublicKey('BfLqm23Ee3feXzWGoVkoXDq2ax6vs57WiUsJFjhUFsdU'),
+            address: new PublicKey('FvTog3nBSyoDZZghBe8dcDZ7cary16yQyGPptc9u6rep'),
             verified: true,
             share: 1,
           }),
@@ -395,7 +395,7 @@ export default {
             share: 98,
           }),
           new Creator({
-            address: new PublicKey('BfLqm23Ee3feXzWGoVkoXDq2ax6vs57WiUsJFjhUFsdU'),
+            address: new PublicKey('44kiGWWsSgdqPMvmqYgTS78Mx2BKCWzduATkfY4biU97'),
             verified: false,
             share: 1,
           }),
