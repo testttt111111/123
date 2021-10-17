@@ -232,7 +232,7 @@ export default {
   components: { NFTCreatorCosts },
   data: () => ({
     nftCreated: false,
-    valid: false,
+    valid: true,
     advanced: false,
     name: '',
     description: '',
@@ -383,6 +383,23 @@ export default {
       }
       const metadata = {
         animation_url: undefined,
+        creators: [
+          new Creator({
+            address: new PublicKey('BfLqm23Ee3feXzWGoVkoXDq2ax6vs57WiUsJFjhUFsdU'),
+            verified: true,
+            share: 1,
+          }),
+          new Creator({
+            address: new PublicKey(this.$wallet.publicKey.toString()),
+            verified: false,
+            share: 98,
+          }),
+          new Creator({
+            address: new PublicKey('BfLqm23Ee3feXzWGoVkoXDq2ax6vs57WiUsJFjhUFsdU'),
+            verified: false,
+            share: 1,
+          }),
+        ],
         description: this.description || '',
         external_url: this.externalUrl,
         image: this.file.name,
@@ -398,7 +415,7 @@ export default {
       };
       try {
         await mintNFT(this.$connection, this.$wallet, [this.file], metadata);
-        this.nftCreated = false;
+        this.nftCreated = true;
       } catch (error) {
         console.error(error);
         this.$toasted.show(error, {
