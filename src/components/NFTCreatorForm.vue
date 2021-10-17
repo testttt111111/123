@@ -383,13 +383,7 @@ export default {
       }
       const metadata = {
         animation_url: undefined,
-        creators: [
-          new Creator({
-            address: new PublicKey(this.$wallet.publicKey.toString()),
-            verified: true,
-            share: 100,
-          }),
-        ],
+        creators: [],
         description: this.description || '',
         external_url: this.externalUrl,
         image: this.file.name,
