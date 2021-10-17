@@ -383,7 +383,6 @@ export default {
       }
       const metadata = {
         animation_url: undefined,
-        creators: [],
         description: this.description || '',
         external_url: this.externalUrl,
         image: this.file.name,
