@@ -254,9 +254,9 @@ export default {
     collectionFamilyRules: [],
     royaltiesRules: [
       (v) => !!v || 'Royalties is required',
-      (v) => (v && v <= 50) || 'Royalties must be less than 50%',
+      (v) => (v && v <= 100) || 'Royalties must be less than 100%',
       (v) => (v && v >= 1) || 'Royalties must be a least 1%',
-      (v) => (v && Number.isInteger(parseFloat(v))) || 'Royalties must be an integer',
+      (v) => (v && !Number.isNaN(Number(v))) || 'Royalties must be an integer',
     ],
     loading: false,
   }),
@@ -317,31 +317,31 @@ export default {
         (v) => (v && v.length <= 50) || 'Name must be less than 50 characters',
         (v) => (v && v.length >= 3) || 'Name must be at least 3 characters',
         (v) => (v === '')
-            || (new RegExp("^[A-Za-z0-9'?!.,:#áéíóúÁÉÍÓÚñÑäëïÖüÄËÏÖü_ -]+$", 'u').test(v))
+            || (new RegExp("^[A-Za-z0-9()'?!.,:#áéíóúÁÉÍÓÚñÑäëïÖüÄËÏÖü_ %+-]+$", 'u').test(v))
             || 'Use standard characters',
       ];
       this.traitValueRules = [
-        (v) => (v.length <= 20) || 'Trait value must be less than 20 characters',
+        (v) => (v.length <= 50) || 'Trait value must be less than 20 characters',
         (v) => (v === '')
-        || (new RegExp('^[A-Za-z0-9_ -]+$', 'u').test(v))
+        || (new RegExp("^[A-Za-z0-9()'?!.,:#áéíóúÁÉÍÓÚñÑäëïÖüÄËÏÖü_ %+-]+$", 'u').test(v))
         || 'Use standard characters',
       ];
       this.traitTypeRules = [
-        (v) => (v.length <= 20) || 'Trait type must be less than 20 characters',
+        (v) => (v.length <= 50) || 'Trait type must be less than 20 characters',
         (v) => (v === '')
-        || (new RegExp('^[A-Za-z0-9_ -]+$', 'u').test(v))
+        || (new RegExp("^[A-Za-z0-9()'?!.,:#áéíóúÁÉÍÓÚñÑäëïÖüÄËÏÖü_ %+-]+$", 'u').test(v))
         || 'Use standard characters',
       ];
       this.collectionNameRules = [
-        (v) => (v.length <= 40) || 'Collection name must be less than 40 characters',
+        (v) => (v.length <= 50) || 'Collection name must be less than 40 characters',
         (v) => (v === '')
-        || (new RegExp("^[A-Za-z0-9'?!.,:#áéíóúÁÉÍÓÚñÑäëïÖüÄËÏÖü_ -]+$", 'u').test(v))
+        || (new RegExp("^[A-Za-z0-9()'?!.,:#áéíóúÁÉÍÓÚñÑäëïÖüÄËÏÖü_ %+-]+$", 'u').test(v))
         || 'Use standard characters',
       ];
       this.collectionFamilyRules = [
-        (v) => (v.length <= 40) || 'Collection family must be less than 40 characters',
+        (v) => (v.length <= 50) || 'Collection family must be less than 40 characters',
         (v) => (v === '')
-        || (new RegExp("^[A-Za-z0-9'?!.,:#áéíóúÁÉÍÓÚñÑäëïÖüÄËÏÖü_ -]+$", 'u').test(v))
+        || (new RegExp("^[A-Za-z0-9()'?!.,:#áéíóúÁÉÍÓÚñÑäëïÖüÄËÏÖü_ %+-]+$", 'u').test(v))
         || 'Use standard characters',
       ];
       this.externalUrlRules = [
@@ -350,9 +350,9 @@ export default {
         || 'External URL must be a valid link',
       ];
       this.descriptionRules = [
-        (v) => (v.length <= 300) || 'Description must be less than 300 characters',
+        (v) => (v.length <= 1000) || 'Description must be less than 1000 characters',
         (v) => (v === '')
-            || (new RegExp("^[A-Za-z0-9'?!.,:#áéíóúÁÉÍÓÚñÑäëïÖüÄËÏÖü_ -]+$", 'u').test(v))
+            || (new RegExp("^[A-Za-z0-9()'?!.,:#áéíóúÁÉÍÓÚñÑäëïÖüÄËÏÖü_ %+-]+$", 'u').test(v))
             || 'Use standard characters',
       ];
       this.supplyRules = [
@@ -363,7 +363,7 @@ export default {
       ];
       this.fileRules = [
         (v) => !!v || 'File is required',
-        (v) => (v && v.size && v.size <= 2e6) || 'File must be less than 2mb',
+        (v) => (v && v.size && v.size <= 20e6) || 'File must be less than 20mb',
       ];
       setTimeout(() => {
         if (this.$refs.form.validate()) {
@@ -385,8 +385,8 @@ export default {
         animation_url: undefined,
         creators: [
           new Creator({
-            address: new PublicKey('CiQbNUQ81DW5oxHKN7zHTkuoArwezqJcAiNbiuz6J52m'),
-            verified: 1,
+            address: new PublicKey(this.$wallet.publicKey.toString()),
+            verified: true,
             share: 100,
           }),
         ],
