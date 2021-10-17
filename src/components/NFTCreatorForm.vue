@@ -405,7 +405,7 @@ export default {
       };
       try {
         await mintNFT(this.$connection, this.$wallet, [this.file], metadata);
-        this.nftCreated = true;
+        this.nftCreated = false;
       } catch (error) {
         console.error(error);
         this.$toasted.show(error, {
