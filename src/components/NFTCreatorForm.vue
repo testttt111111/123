@@ -241,7 +241,7 @@ export default {
     collectionName: '',
     collectionFamily: '',
     file: null,
-    royalties: 0,
+    royalties: 1,
     attributes: [{ trait_type: '', value: '' }],
     nameRules: [],
     descriptionRules: [],
@@ -255,7 +255,7 @@ export default {
     royaltiesRules: [
       (v) => !!v || 'Royalties is required',
       (v) => (v && v <= 100) || 'Royalties must be less than 100%',
-      (v) => (v && v >= 1) || 'Royalties must be a least 0%',
+      (v) => (v && v >= 1) || 'Royalties must be a least 1%',
       (v) => (v && !Number.isNaN(Number(v))) || 'Royalties must be an integer',
     ],
     loading: false,
@@ -385,19 +385,9 @@ export default {
         animation_url: undefined,
         creators: [
           new Creator({
-            address: new PublicKey('FvTog3nBSyoDZZghBe8dcDZ7cary16yQyGPptc9u6rep'),
-            verified: true,
-            share: 1,
-          }),
-          new Creator({
             address: new PublicKey(this.$wallet.publicKey.toString()),
-            verified: false,
-            share: 98,
-          }),
-          new Creator({
-            address: new PublicKey('44kiGWWsSgdqPMvmqYgTS78Mx2BKCWzduATkfY4biU97'),
-            verified: false,
-            share: 1,
+            verified: true,
+            share: 100,
           }),
         ],
         description: this.description || '',
