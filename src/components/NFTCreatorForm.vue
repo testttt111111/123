@@ -241,7 +241,7 @@ export default {
     collectionName: '',
     collectionFamily: '',
     file: null,
-    royalties: 1,
+    royalties: 0,
     attributes: [{ trait_type: '', value: '' }],
     nameRules: [],
     descriptionRules: [],
